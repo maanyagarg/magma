@@ -172,11 +172,13 @@ function canvasArtwork() {
       end: "250% top",
       scroller: ".main",
     },
+    markers: true,
     onUpdate: render,
   });
   images[1].onload = render;
 
   function render() {
+    context.canvas.style.opacity = imageSeq.frame / totalImages;
     scaleImage(images[imageSeq.frame], context);
   }
 
@@ -197,7 +199,7 @@ function canvasArtwork() {
       centerShift_x,
       centerShift_y,
       image.width * ratio,
-      image.height * ratio
+      image.height * ratio,
     );
   }
   ScrollTrigger.create({
